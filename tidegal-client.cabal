@@ -1,0 +1,60 @@
+name:                tidegal-client
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/suzumiyasmith/tidegal-client#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Suzumiya
+maintainer:          suzumiyasmith@gmail.com
+copyright:           Copyright: (c) 2017 Suzumiya
+category:            Graphics
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Tide.Client.Network
+                       Tide.Client.Init
+                       Tide.Client.Input
+                       Tide.Client.Render
+                       Tide.Client.Render.Shader
+                       Tide.Client.Render.Resource
+  build-depends:       base >= 4.7 && < 5
+                     , GPipe
+                     , GPipe-GLFW
+                     , bytestring
+                     , wuss
+                     , text
+                     , JuicyPixels
+                     , linear
+                     , transformers
+                     , vector
+                     , split
+                     , file-embed
+                     , tidegal-transport
+                     , websockets
+                     , binary
+  default-language:    Haskell2010
+
+executable tidegal-client
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , tidegal-client
+  default-language:    Haskell2010
+
+test-suite tidegal-client-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , tidegal-client
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/suzumiyasmith/tidegal-client
